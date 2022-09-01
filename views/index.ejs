@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon App</title>
+</head>
+<body>
+    <div class="container">
+    <div>
+        <table>
+            <% for (i = 0; i < 10; i++) { %>
+            <tr>
+                <td><a href= "/<%=i%>"><%=data[i].name %></a> </td>
+                <!-- <td><%=data[i].type %></td> -->
+                <!-- <td><%=data[i].stats.hp %></td> -->
+                <td><img src="<%=data[i].img%>"></td>
+                <td>
+                    <form action="/<%=i %>?_method=DELETE" method="POST">
+                        <input type="submit" value="delete">
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+        </table>
+        
+</div>
+</body>
+<body>
+</body>
+
+</html>
