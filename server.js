@@ -26,24 +26,25 @@ app.get('/', (request, respond) => {
     respond.render('index.ejs', { data: Pokemon});
 });
 
+//////////
+// New
+//////////
+app.get("/new", (req, res) => {
+    res.render("new.ejs");
+});
+
+app.post("/", (req, res) => {
+    Pokemon.unshift(req.body)
+    res.redirect("/")
+});
+
 ///////////
 // Show
 //////////
 app.get('/:id', (request, respond) => {
     respond.render('show.ejs', { data: Pokemon[request.params.id] });
 });
-//////////
-// New
-//////////
-app.get("'/'/new", (request, respond) => {
-    respond.render('new.ejs')
-});
 
-app.post('/', (request, respond) => {
-    console.log(request.body)
-    data.push(request.body)
-    respond.redirect('/pokemons')
-});
 
 
 app.delete("/:id", (req, res) => {
@@ -51,7 +52,21 @@ app.delete("/:id", (req, res) => {
     res.redirect("/") //redirect back to index route
   })
 
+  
+  app.get("/:id/edit", (req, res) => {
+    res.render(
+        "edit.ejs",
+        {
+            data: Pokemon[req.params.id],
+            id: [req.params.id],
+        }
+    )
+})
 
+app.put("/:id", (req, res) => {
+    Pokemon[req.params.id] = req.body
+    res.redirect("/" +req.params.id)
+})
 
 
 ////////////

@@ -8,25 +8,30 @@
     <title>Pokemon App</title>
 </head>
 <body>
+    <nav><a href="/new">Create a New Pokemon</a</nav>
     <div class="container">
     <div>
         <table>
-            <% for (i = 0; i < 10; i++) { %>
+            <% for (i = 0; i < data.length; i++) { %>
             <tr>
                 <td><a href= "/<%=i%>"><%=data[i].name %></a> </td>
-                <!-- <td><%=data[i].type %></td> -->
-                <!-- <td><%=data[i].stats.hp %></td> -->
                 <td><img src="<%=data[i].img%>"></td>
                 <td>
                     <form action="/<%=i %>?_method=DELETE" method="POST">
                         <input type="submit" value="delete">
                     </form>
+                    <a href="/<%=i %>/edit">Edit</a>
                 </td>
             </tr>
         <% } %>
         </table>
         
 </div>
+<style>
+    body {
+        background-color: rgb(35, 163, 84);
+    }
+</style>
 </body>
 <body>
 </body>
